@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .timer-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .timer-display .time {
+            font-size: 72px;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .timer-display .stats {
+            font-size: 16px;
+            opacity: 0.9;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .stats-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stats-item .label {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .stats-item .value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .click-button {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .click-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .click-button:active {
+            transform: translateY(0);
+        }
+
+        .click-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .click-button:active::before {
+            animation: ripple 0.6s ease-out;
+        }
+
+        @keyframes ripple {
+            to {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(-20px, -20px) rotate(2deg);
+            }
+            50% {
+                transform: translate(20px, 20px) rotate(-2deg);
+            }
+            75% {
+                transform: translate(-15px, 15px) rotate(1deg);
+            }
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 12px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #333;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            background: #f5f5f5;
+        }
+
+        .btn:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .btn:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .btn:nth-child(3) {
+            animation-delay: 1.5s;
+        }
+
+        .btn-reset {
+            grid-column: 1 / -1;
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+
+        .btn-reset:hover {
+            background: #ff5252;
+            border-color: #ff5252;
+        }
+
+        .info {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-indicator.running {
+            background: #4CAF50;
+        }
+
+        .status-indicator.stopped {
+            background: #f44336;
+        }
+
+        .status-indicator.paused {
+            background: #ff9800;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏱️ Click Timer</h1>
+            <p>Keep clicking to keep time running!</p>
+        </div>
+
+        <div class="timer-display">
+            <div class="time" id="display">00:00.00</div>
+            <div class="stats">
+                <div class="stats-item">
+                    <div class="label">Clicks</div>
+                    <div class="value" id="clicks">0</div>
+                </div>
+                <div class="stats-item">
+                    <div class="label">Status</div>
+                    <div class="value" style="display: flex; align-items: center;">
+                        <span class="status-indicator stopped" id="status"></span>
+                        <span id="status-text">Idle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="click-button" onclick="handleClick()">
+            👆 CLICK TO KEEP TIME RUNNING
+        </button>
+
+        <div class="controls">
+            <button class="btn" onclick="handlePause()">⏸️ Pause</button>
+            <button class="btn" onclick="handleResume()">▶️ Resume</button>
+            <button class="btn btn-reset" onclick="handleReset()">🔄 Reset</button>
+        </div>
+
+        <div class="info">
+            ⚡ <strong>How it works:</strong> Click the button to start. The timer runs continuously, but stops if you don't click for 5 seconds!
+        </div>
+    </div>
+
+    <script>
+        let updateInterval;
+
+        async function handleClick() {
+            try {
+                const response = await fetch('/api/click', { method: 'POST' });
+                const data = await response.json();
+                updateDisplay(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function handlePause() {
+            try {
+                const response = await fetch('/api/pause', { method: 'POST' });
+                const data = await response.json();
+                updateStatus();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function handleResume() {
+            try {
+                const response = await fetch('/api/resume', { method: 'POST' });
+                const data = await response.json();
+                updateStatus();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function handleReset() {
+            try {
+                const response = await fetch('/api/reset', { method: 'POST' });
+                const data = await response.json();
+                document.getElementById('display').textContent = '00:00.00';
+                document.getElementById('clicks').textContent = '0';
+                updateStatus();
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function updateStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                updateDisplay(data);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function updateDisplay(data) {
+            const seconds = Math.floor(data.elapsed);
+            const centiseconds = Math.floor((data.elapsed % 1) * 100);
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            
+            const timeString = `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}.${String(centiseconds).padStart(2, '0')}`;
+            document.getElementById('display').textContent = timeString;
+            document.getElementById('clicks').textContent = data.clicks;
+            
+            const statusEl = document.getElementById('status');
+            const statusTextEl = document.getElementById('status-text');
+            
+            statusEl.classList.remove('running', 'stopped', 'paused');
+            if (data.running) {
+                statusEl.classList.add('running');
+                statusTextEl.textContent = 'Running';
+            } else if (data.paused) {
+                statusEl.classList.add('paused');
+                statusTextEl.textContent = 'Paused';
+            } else {
+                statusEl.classList.add('stopped');
+                statusTextEl.textContent = 'Idle';
+            }
+        }
+
+        // Update status every 100ms
+        updateInterval = setInterval(updateStatus, 100);
+
+        // Initial status
+        updateStatus();
+    </script>
+</body>
+</html>
