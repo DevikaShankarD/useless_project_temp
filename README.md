@@ -1,103 +1,180 @@
-<img width="1280" height="640" alt="git (1)" src="https://github.com/user-attachments/assets/8920b256-2ba8-4988-b824-5351134eb4bd" />
-
-
-
-# [Project Name] 🎯
-
+# ⏱️ Click Timer 🎯
 
 ## Basic Details
-### Team Name: [Name]
 
+**Project Name:** Click Timer - Interactive Time Tracker
 
-### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+**Team Name:** GLaDOS
 
-### Project Description
-[2-3 lines about what your project does]
-
-### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
-
-### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
-
-## Technical Details
-### Technologies/Components Used
-For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
-
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
-
-### Implementation
-For Software:
-# Installation
-[commands]
-
-# Run
-[commands]
-
-### Project Documentation
-For Software:
-
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
-
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
-
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+**Team Members:**
+Devika Shankar - ASIET
+Devabhadra K U- ASIET
 
 ---
-Made with ❤️ at TinkerHub Useless Projects 
 
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--26-26?link=https%3A%2F%2Ftinkerhub.org%2Fevents%2F1M8ORET9A1%2Fuseless-projects-3.0)
+## Project Description
 
+Click Timer is a fully functional timer application with an intentionally chaotic user interface. The timer only runs when you continuously click a button - stop clicking for 5 seconds and the timer stops! Available in both desktop (Tkinter) and web (Flask) versions.
 
+The concept merges practical timer functionality with deliberately broken UI mechanics, making time-tracking both functional and entertaining.
 
+---
+
+## The Problem (that doesn't exist)
+
+Most timers are boring and predictable. They just... tick. There's no challenge, no engagement, no reason to keep interacting with them!
+
+---
+
+## The Solution (that nobody asked for)
+
+Introducing the Click Timer - a timer that demands your constant attention! Want to track time? Better keep clicking that button or your timer stops. It's productivity meets chaos. It's a timer that won't leave you alone. It's the timer experience nobody knew they needed!
+
+---
+
+## Technical Details
+
+### Technologies/Components Used
+
+**For Software:**
+* **Languages:** Python 3.8+
+* **Frameworks:** 
+  - Tkinter (Desktop GUI)
+  - Flask (Web Framework)
+* **Libraries:**
+  - time (Timer logic)
+  - random (Button chaos)
+  - jsonify (API responses)
+* **Tools:**
+  - VS Code
+  - Git & GitHub
+  - Python pip
+
+**For Hardware:**
+* No hardware required - runs on any computer with Python installed
+
+---
+
+## Implementation
+
+### For Software:
+
+#### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/DevikaShankarD/useless_project_temp.git
+
+# Navigate to project
+cd timer
+
+# Install dependencies
+pip install Flask
+
+# For Tkinter (usually pre-installed)
+pip install tk
+```
+
+#### Run - Desktop Version (Recommended)
+
+```bash
+python main.py
+```
+
+#### Run - Web Version
+
+```bash
+python app.py
+```
+Then open: `http://localhost:5000`
+
+---
+
+## Project Documentation
+
+### For Software:
+
+#### Screenshots
+
+![Timer Start](Screenshot showing timer at 00:00.00)
+*Screenshot 1: Initial Timer State - Shows the Click Timer interface at startup with timer at 00:00.00, ready to begin*
+
+![Timer Running](Screenshot showing timer running with clicks)
+*Screenshot 2: Timer Running - Demonstrates timer actively running with accumulated time and click counter showing progress*
+
+![Timer Stopped](Screenshot showing timer stopped after 5 seconds)
+*Screenshot 3: Timer Stopped - Shows timer paused after 5 seconds of inactivity, displaying final time and reset option*
+
+#### Architecture Diagram
+
+![Workflow](Add workflow diagram here)
+*Click Timer Architecture: User clicks button → Timer advances continuously → No click for 5 seconds → Timer stops. Pause/Resume/Reset controls available anytime*
+
+---
+
+## How It Works
+
+### Timer Flow
+
+1. **Click Button** → Timer starts and runs continuously
+2. **Keep Clicking** → Timer keeps running (every 5 seconds without click stops it)
+3. **Stop Clicking** → Timer automatically pauses after 5 seconds
+4. **Resume** → Click again or use Resume button to restart
+5. **Reset** → Clear everything and start fresh
+
+### Features
+
+- ⏱️ **Continuous Timer** - Runs like a normal timer once started
+- 👆 **Click-Dependent** - Requires clicks every 5 seconds to stay running
+- 🎯 **Multiple Controls** - Pause, Resume, Reset buttons
+- 💥 **Chaotic UI** - Buttons move around during interaction
+- 📊 **Stats Display** - Shows clicks and current state
+- 🌐 **Dual Versions** - Desktop (Tkinter) and Web (Flask)
+
+---
+
+## Project Demo
+
+### Desktop Version Demo
+Click the button repeatedly and watch the timer count up! Stop clicking and it stops after 5 seconds. Simple, chaotic, and effective!
+
+### Web Version Demo
+Modern UI with floating buttons - same functionality but in your browser at `localhost:5000`.
+
+---
+
+## Team Contributions
+
+* **Divya Shankar:** Full-stack development including timer logic, Tkinter GUI, Flask web app, Material Design UI, GitHub integration, and project documentation
+
+---
+
+## Installation & Setup (Quick Start)
+
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
+- Git (for cloning repo)
+
+### Step-by-Step Setup
+
+```bash
+# 1. Clone repository
+git clone https://github.com/DevikaShankarD/useless_project_temp.git
+cd timer
+
+# 2. Install dependencies
+pip install -e .
+pip install Flask
+
+# 3. Run Desktop Version
+python main.py
+
+# OR Run Web Version
+python app.py
+# Then open http://localhost:5000
+```
+
+---
+
+## Project Structure
