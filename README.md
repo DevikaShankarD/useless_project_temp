@@ -98,15 +98,7 @@ Then open: `http://localhost:5000`
 ### For Software:
 
 #### Screenshots
-
-![Timer Start](Screenshot showing timer at 00:00.00)
-*Screenshot 1: Initial Timer State - Shows the Click Timer interface at startup with timer at 00:00.00, ready to begin*
-
-![Timer Running](Screenshot showing timer running with clicks)
-*Screenshot 2: Timer Running - Demonstrates timer actively running with accumulated time and click counter showing progress*
-
-![Timer Stopped](Screenshot showing timer stopped after 5 seconds)
-*Screenshot 3: Timer Stopped - Shows timer paused after 5 seconds of inactivity, displaying final time and reset option*
+(https://drive.google.com/drive/folders/1IHO64x64mqgG00iAAkcGKRrEddzjFhzn?usp=sharing)
 
 #### Architecture Diagram
 
