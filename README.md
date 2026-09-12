@@ -18,6 +18,9 @@ Click Timer is a fully functional timer application with an intentionally chaoti
 
 The concept merges practical timer functionality with deliberately broken UI mechanics, making time-tracking both functional and entertaining.
 
+
+https://drive.google.com/drive/folders/1IHO64x64mqgG00iAAkcGKRrEddzjFhzn?usp=sharing
+
 ---
 
 ## The Problem (that doesn't exist)
